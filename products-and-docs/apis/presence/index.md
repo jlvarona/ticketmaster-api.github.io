@@ -66,12 +66,17 @@ Authentication required.
 
 presence/{version}/ticket/enter
 {: .code .red}
+
 Sends an external scan entry message
+
 presence/{version}/ticket/exit
 {: .code .red}
+
 Sends and external or internal scan exit message
+
 presence/{version}/ticket/validate
 {: .code .red}
+
 Sends and internal scan entry message
 
 ### Request body structure:
@@ -206,7 +211,8 @@ Host: app.ticketmaster.com
 }
 {% endhighlight %}
 
-###External Scanning
+### External Scanning
+
 For External Scanning the scanner doesn't require extra configuration and calls to the enter and exit endpoints Presence will assume it is an external gate. The external gates have the following rules:
 * The first time a valid ticket is scanned as a entry (using enter endpoint), the ticket wil be marked as ENTERED
 * Any subsequent enter scans for the same ticket will return as an Already Entered ticket and the access will be denied
@@ -214,14 +220,15 @@ For External Scanning the scanner doesn't require extra configuration and calls 
 * Any subsequent Exit scans performed to an already exited ticket will return a Exit Not Permitted response.
 * Any exit scan to a non entered ticket will return a Exit Not Permitted response.
 
-Endpoints used for external scanning:    
+**End points used for external scanning:**    
   
 presence/{version}/ticket/enter
 {: .code .red}
 presence/{version}/ticket/exit
 {: .code .red}
 
-###Internal Scanning
+### Internal Scanning
+
 For Internal Scanning the scanner is required to be assigned to a gate configured with an "Internal Scans" rule. The rule has an option to allow multiple entries with the same ticket or to require an exit before allowing the same ticket again. Please consult the Presence UI training materials for more information.    
 The internal gates have the following rules:
 * The first time a valid ticket is scanned as an internal entry (using validate endpoint) it will be added as an internal entry
@@ -234,7 +241,7 @@ The internal gates have the following rules:
 	* A gate configured for internal scan will NOT be able to perform external exit scans.
 * An internal entry scan (validate) from a scanner on a gate not configured for internal scanning will accept the ticket as an Internal Entry
 
-Endpoints used for internal scanning:    
+**End points used for internal scanning:**    
 
 presence/{version}/ticket/validate
 {: .code .red}
@@ -470,7 +477,8 @@ Host: app.ticketmaster.com
 }
 {% endhighlight %}
 
-####F.A.Q.
+{: .article #FAQ}
+## F.A.Q.
 **Q:** How do I get the device’s assigned gate id from Presence at device initialization?
 
 **A:** The Device endpoint will return the gate Id among other information related to the scanner. Please refer to the Device Information section on this page. 
