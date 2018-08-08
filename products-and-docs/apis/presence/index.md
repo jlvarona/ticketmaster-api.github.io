@@ -389,7 +389,10 @@ presence/{version}/device
 
 {: .nested-list }
 * `venue` (string) - **Required** - the id of the venue that the device is configured too.
-* `mac` (string) - **Required** - A MAC address for the device
+* `mac` (string) - **Optional** - A MAC address for the device. If you send mac address, do not send device ID
+* `device` (string) - **Optional** - The device Id assigned to the device. If you send device, do not send the mac address.
+ 
+ Either a `mac` or `device` parameter is required.
 
 ### Response structure:
 
